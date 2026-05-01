@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>À propos & Contact | Nail Tech Studio by Charlotte</title>
+  <meta name="description" content="Charlotte, prothésiste ongulaire à Mandelieu-la-Napoule depuis 7 ans. Prenez rendez-vous via Planity, WhatsApp ou par téléphone au 07 85 12 37 83." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #FAFAF7; --cream-dark: #F2F2ED; --nude: #E8E4DC;
+      --cocoa: #1A1A1A; --cocoa-light: #4A4A4A;
+      --gold: #C9A84C; --gold-light: #DFC27A; --dark: #1A1A1A;
+      --text: #1A1A1A; --text-light: #5A5A5A;
+      --sage: #C9A84C; --sage-light: #DFC27A; --sage-dark: #1A1A1A;
+      --white: #FFFFFF;
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'Jost', sans-serif;
+      --radius: 12px; --transition: all 0.3s ease;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--cream); color: var(--text); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; background: rgba(250,250,247,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(201,168,76,0.2); }
+    .logo { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; color: var(--dark); letter-spacing: 0.04em; text-decoration: none; }
+    .logo span { font-style: italic; color: var(--gold); }
+    nav { display: flex; gap: 32px; align-items: center; }
+    nav a { font-family: var(--font-body); font-size: 0.8rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); text-decoration: none; transition: var(--transition); }
+    nav a:hover { color: var(--dark); }
+    .btn-header { background: var(--dark); color: var(--white) !important; padding: 10px 24px; border-radius: 999px; font-size: 0.75rem !important; letter-spacing: 0.1em; }
+    .btn-header:hover { background: var(--dark) !important; }
+
+    section { padding: 80px; }
+    .section-eyebrow { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .section-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 300; color: var(--dark); line-height: 1.2; margin-bottom: 20px; }
+    .section-title em { font-style: italic; color: var(--cocoa); }
+
+    /* HERO À PROPOS */
+    .hero-about {
+      min-height: 60vh;
+      padding-top: 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--dark);
+    }
+    .hero-about-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px;
+    }
+    .hero-about-left .section-eyebrow { color: var(--gold-light); }
+    .hero-about-left .section-eyebrow::before { background: var(--sage-light); }
+    .hero-about h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .hero-about h1 em { font-style: italic; color: var(--gold-light); }
+    .hero-about-desc {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 440px;
+      line-height: 1.85;
+    }
+    .hero-about-right {
+      background: linear-gradient(145deg, #2A2A2A, #1A1A1A);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-about-right::after {
+      content: 'Charlotte';
+      font-family: var(--font-display);
+      font-size: 6rem;
+      font-style: italic;
+      color: rgba(201,168,76,0.08);
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+    }
+    .photo-placeholder {
+      width: 280px;
+      height: 360px;
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, #3A3A3A, #2A2A2A);
+      border: 1px solid rgba(201,168,76,0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      z-index: 1;
+    }
+    .photo-placeholder svg { opacity: 0.2; }
+    .photo-placeholder span { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.2); }
+
+    /* HISTOIRE */
+    .histoire { background: var(--cream); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .histoire-text p { font-size: 0.93rem; color: var(--text); line-height: 1.9; margin-bottom: 20px; }
+    .histoire-quote {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--cocoa);
+      line-height: 1.5;
+      padding-left: 24px;
+      border-left: 2px solid var(--gold);
+      margin: 32px 0;
+    }
+    .histoire-signature {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-style: italic;
+      color: var(--cocoa-light);
+      margin-top: 32px;
+    }
+    .histoire-chiffres {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .chiffre-card {
+      background: var(--cream-dark);
+      border-radius: var(--radius);
+      padding: 28px;
+      border: 1px solid rgba(201,168,76,0.15);
+      text-align: center;
+    }
+    .chiffre-num { font-family: var(--font-display); font-size: 2.5rem; font-weight: 300; color: var(--cocoa); line-height: 1; }
+    .chiffre-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); margin-top: 8px; }
+
+    /* VALEURS */
+    .valeurs { background: var(--cream-dark); }
+    .valeurs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .valeur-card { background: var(--cream); border-radius: var(--radius); padding: 36px; border: 1px solid rgba(201,168,76,0.15); transition: var(--transition); }
+    .valeur-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+    .valeur-icon { width: 48px; height: 48px; border-radius: 50%; background: rgba(201,168,76,0.08); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: var(--dark); }
+    .valeur-title { font-family: var(--font-display); font-size: 1.3rem; color: var(--dark); margin-bottom: 12px; }
+    .valeur-desc { font-size: 0.87rem; color: var(--text-light); line-height: 1.8; }
+
+    /* CONTACT */
+    .contact-section { background: var(--cream); display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0; }
+    .contact-left { padding: 80px; background: var(--dark); color: var(--white); }
+    .contact-left .section-eyebrow { color: var(--gold-light); }
+    .contact-left .section-eyebrow::before { background: var(--sage-light); }
+    .contact-left .section-title { color: var(--white); }
+    .contact-info { margin-top: 48px; display: flex; flex-direction: column; gap: 28px; }
+    .contact-info-item { display: flex; align-items: flex-start; gap: 16px; }
+    .contact-info-icon { width: 40px; height: 40px; border-radius: 50%; background: rgba(201,168,76,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--gold-light); }
+    .contact-info-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
+    .contact-info-value { font-family: var(--font-display); font-size: 1.05rem; color: var(--white); }
+    .contact-info-value a { color: var(--white); text-decoration: none; }
+    .contact-info-value a:hover { color: var(--gold-light); }
+    .contact-planity { margin-top: 48px; padding: 28px; background: rgba(201,168,76,0.08); border-radius: var(--radius); border: 1px solid rgba(201,168,76,0.2); }
+    .contact-planity-title { font-family: var(--font-display); font-size: 1.1rem; color: var(--white); margin-bottom: 8px; }
+    .contact-planity-desc { font-size: 0.82rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 20px; }
+    .btn-gold { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: var(--dark); padding: 14px 32px; border-radius: 999px; font-family: var(--font-display); font-size: 1rem; font-style: italic; text-decoration: none; transition: var(--transition); }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    .contact-right { padding: 80px; }
+    .contact-form { display: flex; flex-direction: column; gap: 20px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-light); }
+    .form-input, .form-select, .form-textarea { padding: 14px 18px; border: 1.5px solid var(--nude); border-radius: 8px; background: var(--cream-dark); color: var(--text); font-family: var(--font-body); font-size: 0.9rem; transition: var(--transition); outline: none; appearance: none; }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--dark); background: var(--white); }
+    .form-textarea { resize: vertical; min-height: 120px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .btn-submit { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--dark); color: var(--white); padding: 16px 40px; border-radius: 999px; border: none; font-family: var(--font-display); font-size: 1.05rem; font-style: italic; cursor: pointer; transition: var(--transition); margin-top: 8px; }
+    .btn-submit:hover { background: var(--dark); transform: translateY(-2px); }
+
+    footer { background: var(--dark); color: rgba(255,255,255,0.5); padding: 60px 80px 40px; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .footer-logo { font-family: var(--font-display); font-size: 1.2rem; color: var(--white); text-decoration: none; }
+    .footer-logo span { font-style: italic; color: var(--gold); }
+    .footer-tagline { font-family: var(--font-display); font-style: italic; color: var(--gold); margin: 12px 0 16px; font-size: 0.95rem; }
+    .footer-desc { font-size: 0.82rem; line-height: 1.8; max-width: 280px; }
+    .footer-col-title { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); margin-bottom: 20px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 0.82rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: var(--transition); }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; font-size: 0.75rem; }
+
+    .whatsapp-float { position: fixed; bottom: 32px; right: 32px; z-index: 150; width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: var(--transition); text-decoration: none; }
+    .whatsapp-float:hover { transform: scale(1.1); }
+    .sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: rgba(250,250,247,0.97); backdrop-filter: blur(12px); border-top: 1px solid var(--nude); padding: 12px 16px; gap: 10px; }
+    .sticky-cta a { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 500; text-decoration: none; transition: var(--transition); }
+    .sticky-cta .cta-call { border: 1.5px solid var(--nude); color: var(--dark); }
+    .sticky-cta .cta-book { background: var(--dark); color: var(--white); }
+
+    @media (max-width: 1024px) {
+      section { padding: 60px 40px; }
+      .hero-about { grid-template-columns: 1fr; }
+      .hero-about-left { padding: 60px 40px; }
+      .hero-about-right { height: 50vw; min-height: 280px; }
+      .histoire { grid-template-columns: 1fr; gap: 40px; }
+      .valeurs-grid { grid-template-columns: 1fr 1fr; }
+      .contact-section { grid-template-columns: 1fr; }
+      .contact-left, .contact-right { padding: 60px 40px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      header { padding: 14px 20px; }
+      nav { display: none; }
+      section { padding: 48px 24px; }
+      .hero-about-left { padding: 48px 24px; }
+      .valeurs-grid { grid-template-columns: 1fr; }
+      .histoire-chiffres { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-left, .contact-right { padding: 48px 24px; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .sticky-cta { display: flex; }
+      .whatsapp-float { bottom: 86px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">Nail Tech <span>Studio</span></a>
+    <nav>
+      <a href="index.html#services">Prestations</a>
+      <a href="index.html#tarifs">Tarifs</a>
+      <a href="index.html#zones">Localisation</a>
+      <a href="index.html#avis">Avis</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.planity.com/nail-tech-studio-06210-mandelieu-la-napoule" target="_blank" class="btn-header">Réserver</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-about" style="padding:0;">
+    <div class="hero-about-left">
+      <div class="section-eyebrow">À propos</div>
+      <h1>Bonjour,<br>je suis <em>Charlotte</em></h1>
+      <p class="hero-about-desc">Prothésiste ongulaire depuis 7 ans, je reçois mes clientes dans mon atelier à Mandelieu-la-Napoule. Ce qui me passionne dans ce métier, c'est la relation avec chaque cliente — et la liberté créative que j'ai, que ce soit pour une pose toute simple ou un nail art élaboré.</p>
+    </div>
+    <div class="hero-about-right">
+      <div class="photo-placeholder">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="0.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Photo à venir</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTOIRE -->
+  <section class="histoire">
+    <div class="histoire-text">
+      <div class="section-eyebrow">Mon parcours</div>
+      <h2 class="section-title">7 ans de <em>passion</em></h2>
+      <p>Tout a commencé par une fascination pour le détail et le soin. La prothésie ongulaire, c'est une discipline qui demande autant de technique que de créativité — et c'est exactement ce qui m'a accrochée dès le départ.</p>
+      <p>Après plusieurs années d'expérience en salon, j'ai choisi de travailler depuis mon atelier à Mandelieu-la-Napoule pour offrir quelque chose de différent : un rendez-vous sans précipitation, une attention entière portée à chaque cliente, et une relation qui dure.</p>
+      <blockquote class="histoire-quote">
+        « Ce qui me passionne, c'est la relation avec chaque cliente et la liberté créative — que ce soit pour une pose simple ou un nail art élaboré. »
+      </blockquote>
+      <p>Aujourd'hui, toutes mes prestations sont réalisées avec une préparation en manucure russe — la technique la plus précise et la plus respectueuse de l'ongle naturel. C'est ma façon de garantir à chaque cliente un résultat durable et soigné.</p>
+      <div class="histoire-signature">Charlotte</div>
+    </div>
+    <div class="histoire-chiffres">
+      <div class="chiffre-card">
+        <div class="chiffre-num">7</div>
+        <div class="chiffre-label">Ans d'expérience</div>
+      </div>
+      <div class="chiffre-card">
+        <div class="chiffre-num">5★</div>
+        <div class="chiffre-label">Note Google</div>
+      </div>
+      <div class="chiffre-card">
+        <div class="chiffre-num">22</div>
+        <div class="chiffre-label">Avis vérifiés</div>
+      </div>
+      <div class="chiffre-card">
+        <div class="chiffre-num">~15</div>
+        <div class="chiffre-label">Clientes fidèles</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALEURS -->
+  <section class="valeurs">
+    <div class="section-eyebrow">Ce qui me définit</div>
+    <h2 class="section-title">Mes <em>valeurs</em></h2>
+    <div class="valeurs-grid">
+      <div class="valeur-card">
+        <div class="valeur-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="valeur-title">La relation avant tout</div>
+        <p class="valeur-desc">Chaque rendez-vous est une conversation autant qu'une prestation. Je prends le temps d'écouter, de comprendre vos envies et de vous conseiller sans jamais vous imposer quoi que ce soit.</p>
+      </div>
+      <div class="valeur-card">
+        <div class="valeur-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="valeur-title">La créativité sans limite</div>
+        <p class="valeur-desc">De la pose la plus naturelle au nail art le plus élaboré — j'aime explorer, innover et créer quelque chose d'unique pour chaque cliente. Votre imagination est ma seule limite.</p>
+      </div>
+      <div class="valeur-card">
+        <div class="valeur-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="valeur-title">L'exigence du détail</div>
+        <p class="valeur-desc">La manucure russe, le matériel stérilisé, les consommables à usage unique — chaque détail compte. La qualité n'est pas une option, c'est la base de mon travail.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact" style="padding:0;">
+    <div class="contact-left">
+      <div class="section-eyebrow">Me contacter</div>
+      <h2 class="section-title">Prenons<br><em>rendez-vous</em></h2>
+      <div class="contact-info">
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.64 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.83a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">Téléphone</div>
+            <div class="contact-info-value"><a href="tel:+33785123783">07 85 12 37 83</a></div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">WhatsApp</div>
+            <div class="contact-info-value"><a href="https://wa.me/33785123783" target="_blank">Envoyer un message</a></div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">Email</div>
+            <div class="contact-info-value"><a href="mailto:nailtechbycharlotte@gmail.com">nailtechbycharlotte@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">Paiement</div>
+            <div class="contact-info-value">Carte bancaire & espèces</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">Horaires</div>
+            <div class="contact-info-value">Lundi – Samedi · 9h00 – 19h30</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">Instagram</div>
+            <div class="contact-info-value"><a href="https://instagram.com/nailtechstudio06" target="_blank">@nailtechstudio06</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-planity">
+        <div class="contact-planity-title">Réservation en ligne</div>
+        <p class="contact-planity-desc">Consultez mes disponibilités en temps réel et réservez directement votre créneau sur Planity — simple, rapide et confirmé instantanément.</p>
+        <a href="https://www.planity.com/nail-tech-studio-06210-mandelieu-la-napoule" target="_blank" class="btn-gold">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Réserver sur Planity
+        </a>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="section-eyebrow">Formulaire</div>
+      <h3 style="font-family:var(--font-display);font-size:1.8rem;font-weight:300;color:var(--dark);margin-bottom:32px;">Demande de <em style="font-style:italic;color:var(--cocoa);">rendez-vous</em></h3>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nom & Prénom</label>
+            <input type="text" class="form-input" placeholder="Votre nom" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Téléphone</label>
+            <input type="tel" class="form-input" placeholder="06 00 00 00 00" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Prestation souhaitée</label>
+          <select class="form-select" required>
+            <option value="" disabled selected>Choisir une prestation</option>
+            <option>La Classique (pose gel)</option>
+            <option>La Renforcée (pose gel)</option>
+            <option>La Complète (capsule/GelX)</option>
+            <option>Nail Art</option>
+            <option>Beauté des Pieds</option>
+            <option>La Pédicare</option>
+            <option>La Pédicare Signature</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" placeholder="Vos envies, disponibilités, questions..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Envoyer ma demande
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo">Nail Tech <span>Studio</span></a>
+        <div class="footer-tagline">L'art de sublimer vos mains & vos pieds</div>
+        <p class="footer-desc">Prothésiste ongulaire à Mandelieu-la-Napoule. Je vous reçois dans mon atelier sur rendez-vous uniquement, du lundi au samedi.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Prestations</div>
+        <ul class="footer-links">
+          <li><a href="la-classique.html">La Classique</a></li>
+          <li><a href="la-renforcee.html">La Renforcée</a></li>
+          <li><a href="la-complete.html">La Complète</a></li>
+          <li><a href="nail-art.html">Nail Art</a></li>
+          <li><a href="beaute-des-pieds.html">Beauté des Pieds</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="tel:+33785123783">07 85 12 37 83</a></li>
+          <li><a href="mailto:nailtechbycharlotte@gmail.com">nailtechbycharlotte@gmail.com</a></li>
+          <li><a href="https://wa.me/33785123783" target="_blank">WhatsApp</a></li>
+          <li><a href="https://www.planity.com/nail-tech-studio-06210-mandelieu-la-napoule" target="_blank">Réserver sur Planity</a></li>
+          <li><a href="https://instagram.com/nailtechstudio06" target="_blank">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Nail Tech Studio by Charlotte — Mandelieu-la-Napoule</span>
+      <span><a href="mentions-legales.html" style="color:inherit;text-decoration:none;">Mentions légales</a> · <a href="mentions-legales.html#confidentialite" style="color:inherit;text-decoration:none;">Politique de confidentialité</a></span>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/33785123783" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+
+  <div class="sticky-cta" id="stickyCta">
+    <a href="tel:+33785123783" class="cta-call">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.64 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.83a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Appeler
+    </a>
+    <a href="https://www.planity.com/nail-tech-studio-06210-mandelieu-la-napoule" target="_blank" class="cta-book">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Réserver
+    </a>
+  </div>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.btn-submit');
+      btn.textContent = '✓ Message envoyé !';
+      btn.style.background = '#4CAF50';
+      setTimeout(() => {
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Envoyer ma demande';
+        btn.style.background = '';
+        e.target.reset();
+      }, 3000);
+    }
+    const stickyCta = document.getElementById('stickyCta');
+    window.addEventListener('scroll', () => {
+      stickyCta.style.display = window.scrollY > 400 ? 'flex' : 'none';
+    });
+  </script>
+</body>
+</html>
